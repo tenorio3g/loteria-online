@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Lotería Online</title>
+  <style>
+    body { font-family: Arial; text-align: center; background: #f0f0f0; }
+    #card { display: grid; grid-template-columns: repeat(4, 60px); gap: 10px; margin: 20px auto; }
+    .cell { padding: 20px; background: #ddd; border-radius: 8px; font-weight: bold; }
+    .marked { background: #4caf50; color: white; }
+  </style>
+</head>
+<body>
+  <h1>Lotería Online</h1>
+  <input id="name" placeholder="Tu nombre">
+  <button onclick="joinGame()">Unirse</button>
+  <div id="status"></div>
+  <div id="card"></div>
+  <h2 id="lastNumber"></h2>
+  <h2 id="winner"></h2>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>
