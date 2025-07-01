@@ -3,22 +3,80 @@
 <head>
   <meta charset="UTF-8">
   <title>Lotería Online</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <script defer src="client.js"></script>
   <style>
-    body { font-family: Arial; text-align: center; background: #f0f0f0; }
-    #card { display: grid; grid-template-columns: repeat(4, 60px); gap: 10px; margin: 20px auto; }
-    .cell { padding: 20px; background: #ddd; border-radius: 8px; font-weight: bold; }
-    .marked { background: #4caf50; color: white; }
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #fdf6e3;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      background-color: #ff9800;
+      color: white;
+      padding: 10px;
+      margin: 0;
+    }
+
+    #controls {
+      margin: 20px;
+    }
+
+    #card {
+      display: grid;
+      grid-template-columns: repeat(5, 80px);
+      gap: 8px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .cell {
+      width: 80px;
+      height: 80px;
+      border: 2px solid #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fffbe6;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .marked {
+      background-color: #ffeb3b !important;
+      border-color: #f57c00;
+      box-shadow: 0 0 5px #f57c00;
+    }
+
+    #lastImage img {
+      box-shadow: 0 0 10px #ff9800;
+    }
+
+    #status, #winner {
+      margin-top: 20px;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
-  <h1>Lotería Online</h1>
-  <input id="name" placeholder="Tu nombre">
-  <button onclick="joinGame()">Unirse</button>
+  <h1>🎉 Lotería Mexicana Online 🎉</h1>
+
+  <div id="controls">
+    <input type="text" id="name" placeholder="Tu nombre" />
+    <button onclick="joinGame()">Unirse</button>
+  </div>
+
   <div id="status"></div>
+  <div id="winner"></div>
+
+  <h2 id="lastNumber">Esperando a que inicie el juego...</h2>
+  <div id="lastImage" style="width: 150px; margin: 10px auto;"></div>
+
   <div id="card"></div>
-  <h2 id="lastNumber"></h2>
-  <h2 id="winner"></h2>
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="client.js"></script>
 </body>
 </html>
