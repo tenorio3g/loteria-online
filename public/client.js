@@ -19,7 +19,7 @@ socket.on('card', (generatedCard) => {
     // Mostrar imagen si es el número 1 (El Gallo)
     if (num === 1) {
       const img = document.createElement('img');
-      img.src = 'img/public/Img/gallo.png';  // Asegúrese de que esté en public/img/gallo.png
+      img.src = 'public/Img/gallo.png';  // Asegúrese de que esté en public/img/gallo.png
       img.alt = 'El Gallo';
       img.style.width = '100%';
       img.style.borderRadius = '8px';
