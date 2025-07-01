@@ -2,7 +2,7 @@ const socket = io();
 let card = [];
 let cardData = [];
 
-// ✅ Cargar datos de cartas desde cards.json
+// ✅ Cargar cartas desde cards.json al iniciar
 fetch('cards.json')
   .then(response => response.json())
   .then(data => {
@@ -16,6 +16,7 @@ function joinGame() {
   }
 }
 
+// ✅ Recibe la carta del jugador desde el servidor
 socket.on('card', (generatedCard) => {
   card = generatedCard;
   const cardDiv = document.getElementById('card');
@@ -42,12 +43,13 @@ socket.on('card', (generatedCard) => {
   }
 });
 
+// ✅ Recibe el número/carta sorteada
 socket.on('numberDrawn', (num) => {
   const lastNumberEl = document.getElementById('lastNumber');
   const lastImageEl = document.getElementById('lastImage');
 
   lastNumberEl.textContent = `Salió: ${num}`;
-  lastImageEl.innerHTML = '';
+  lastImageEl.innerHTML = ''; // limpia imagen anterior
 
   const carta = cardData.find(c => c.id === num);
   if (carta) {
@@ -60,6 +62,7 @@ socket.on('numberDrawn', (num) => {
     lastNumberEl.textContent = `Salió: ${carta.name}`;
   }
 
+  // ✅ Marca la carta si coincide con alguna de la tarjeta del jugador
   const cells = document.querySelectorAll('.cell');
   cells.forEach(cell => {
     const text = cell.textContent.trim();
@@ -71,10 +74,12 @@ socket.on('numberDrawn', (num) => {
   });
 });
 
+// ✅ Muestra el nombre del ganador
 socket.on('winner', (name) => {
   document.getElementById('winner').textContent = `¡Ganó ${name}! 🎉`;
 });
 
+// ✅ Muestra mensajes de estado (esperando jugadores, etc.)
 socket.on('message', (msg) => {
   document.getElementById('status').textContent = msg;
 });
