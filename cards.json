@@ -20,8 +20,8 @@
   {
     "id": 4,
     "name": "Catrín",
-    "image": "catrín.png",
-    "audio": "catrín.mp3"
+    "image": "catrin.png",
+    "audio": "catrin.mp3"
   },
   {
     "id": 5,
@@ -56,14 +56,14 @@
   {
     "id": 10,
     "name": "Árbol",
-    "image": "árbol.png",
-    "audio": "árbol.mp3"
+    "image": "arbol.png",
+    "audio": "arbol.mp3"
   },
   {
     "id": 11,
     "name": "Melón",
-    "image": "melón.png",
-    "audio": "melón.mp3"
+    "image": "melon.png",
+    "audio": "melon.mp3"
   },
   {
     "id": 12,
@@ -98,8 +98,8 @@
   {
     "id": 17,
     "name": "Bandolón",
-    "image": "bandolón.png",
-    "audio": "bandolón.mp3"
+    "image": "bandolon.png",
+    "audio": "bandolon.mp3"
   },
   {
     "id": 18,
@@ -116,8 +116,8 @@
   {
     "id": 20,
     "name": "Pájaro",
-    "image": "pájaro.png",
-    "audio": "pájaro.mp3"
+    "image": "pajaro.png",
+    "audio": "pajaro.mp3"
   },
   {
     "id": 21,
@@ -158,14 +158,14 @@
   {
     "id": 27,
     "name": "Corazón",
-    "image": "corazón.png",
-    "audio": "corazón.mp3"
+    "image": "corazon.png",
+    "audio": "corazon.mp3"
   },
   {
     "id": 28,
     "name": "Sandía",
-    "image": "sandía.png",
-    "audio": "sandía.mp3"
+    "image": "sandia.png",
+    "audio": "sandia.mp3"
   },
   {
     "id": 29,
@@ -176,8 +176,8 @@
   {
     "id": 30,
     "name": "Camarón",
-    "image": "camarón.png",
-    "audio": "camarón.mp3"
+    "image": "camaron.png",
+    "audio": "camaron.mp3"
   },
   {
     "id": 31,
@@ -188,8 +188,8 @@
   {
     "id": 32,
     "name": "Músico",
-    "image": "músico.png",
-    "audio": "músico.mp3"
+    "image": "musico.png",
+    "audio": "musico.mp3"
   },
   {
     "id": 33,
@@ -224,8 +224,8 @@
   {
     "id": 38,
     "name": "Alacrán",
-    "image": "alacrán.png",
-    "audio": "alacrán.mp3"
+    "image": "alacran.png",
+    "audio": "alacran.mp3"
   },
   {
     "id": 39,
@@ -241,9 +241,9 @@
   },
   {
     "id": 41,
-    "name": "Caña",
-    "image": "caña.png",
-    "audio": "caña.mp3"
+    "name": "Rosa",
+    "image": "rosa.png",
+    "audio": "rosa.mp3"
   },
   {
     "id": 42,
