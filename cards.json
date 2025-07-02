@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Gallo",
-    "image": "gallo.png"
+    "image": "gallo.png",
     "sound": "gallo.mp3"
   },
   {
