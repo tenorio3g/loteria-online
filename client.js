@@ -41,7 +41,7 @@ socket.on('card', (generatedCard) => {
     const carta = cardData.find(c => c.id === num);
     if (carta) {
       const img = document.createElement('img');
-      img.src = carta.image;
+      img.src = carta.image; // 👉 sin carpeta
       img.alt = carta.name;
       img.style.width = '80%';
       img.style.borderRadius = '8px';
@@ -61,32 +61,29 @@ socket.on('numberDrawn', (num) => {
   const carta = cardData.find(c => c.id === num);
 
   if (carta) {
-    // Mostrar nombre de la carta
     document.getElementById('lastNumber').textContent = `Salió: ${carta.name}`;
 
-    // Mostrar imagen de la carta
     const lastImageDiv = document.getElementById('lastImage');
     lastImageDiv.innerHTML = '';
 
     const img = document.createElement('img');
-    img.src = carta.image;
+    img.src = carta.image; // 👉 sin carpeta
     img.alt = carta.name;
     img.style.width = '100%';
     img.style.borderRadius = '8px';
     lastImageDiv.appendChild(img);
 
-    // Reproducir sonido de la carta
+    // Reproducir sonido en raíz
     if (carta.sound) {
       if (audio) {
         audio.pause();
       }
-      audio = new Audio(carta.sound);
+      audio = new Audio(carta.sound); // 👉 sin carpeta
       audio.play().catch(err => {
         console.warn('No se pudo reproducir el sonido:', err);
       });
     }
   } else {
-    // Si no existe la carta, mostrar solo número
     document.getElementById('lastNumber').textContent = `Salió: ${num}`;
     document.getElementById('lastImage').innerHTML = '';
   }
