@@ -2,65 +2,65 @@ const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
 const path = require('path');
+const fs = require('fs');
 const { generateCard } = require('./card');
 
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
-
 const PORT = process.env.PORT || 3000;
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname)));
 
 let players = {};
 let drawnNumbers = [];
 let interval;
 let gameInProgress = false;
 
-// ✅ Conexión de nuevo jugador
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
 io.on('connection', (socket) => {
-  console.log(`Usuario conectado: ${socket.id}`);
+  console.log(`Cliente conectado: ${socket.id}`);
 
   socket.on('join', (name) => {
-    if (gameInProgress) {
-      socket.emit('message', 'Espera al siguiente juego...');
+    if (Object.keys(players).length >= 10) {
+      socket.emit('message', '¡El juego ya está lleno!');
       return;
     }
-
-    players[socket.id] = {
-      name,
-      card: generateCard()
-    };
-
+    players[socket.id] = { name, card: generateCard() };
     socket.emit('card', players[socket.id].card);
-    io.emit('message', `Jugadores conectados: ${Object.keys(players).length}`);
+    io.emit('message', `${name} se ha unido al juego.`);
 
-    if (Object.keys(players).length >= 4 && !gameInProgress) {
+    if (!gameInProgress && Object.keys(players).length >= 4) {
       startGame();
     }
   });
 
   socket.on('disconnect', () => {
-    console.log(`Usuario desconectado: ${socket.id}`);
-    delete players[socket.id];
-    io.emit('message', `Jugadores conectados: ${Object.keys(players).length}`);
+    if (players[socket.id]) {
+      const name = players[socket.id].name;
+      delete players[socket.id];
+      io.emit('message', `${name} salió del juego.`);
+    }
+    if (Object.keys(players).length < 4 && gameInProgress) {
+      stopGame();
+      io.emit('message', 'Juego detenido por falta de jugadores.');
+    }
   });
 });
 
-// ✅ Iniciar juego automáticamente
 function startGame() {
-  drawnNumbers = [];
   gameInProgress = true;
-  io.emit('message', '¡Comienza la lotería!');
+  drawnNumbers = [];
 
   interval = setInterval(() => {
     if (drawnNumbers.length >= 54) {
-      clearInterval(interval);
-      gameInProgress = false;
-      io.emit('message', 'Fin del juego: se acabaron las cartas');
+      stopGame();
+      io.emit('message', '¡Todas las cartas han salido!');
       return;
     }
-
     let num;
     do {
       num = Math.floor(Math.random() * 54) + 1;
@@ -68,26 +68,26 @@ function startGame() {
 
     drawnNumbers.push(num);
     io.emit('numberDrawn', num);
-
-    checkForWinners();
-  }, 3000);
+    checkWinners();
+  }, 4000);
 }
 
-// ✅ Verificar si alguien ya ganó
-function checkForWinners() {
-  for (const [id, player] of Object.entries(players)) {
-    const matched = player.card.filter(n => drawnNumbers.includes(n));
-    if (matched.length >= 16) {
-      clearInterval(interval);
-      gameInProgress = false;
-      io.emit('winner', player.name);
-      io.emit('message', `Fin del juego: ganó ${player.name}`);
+function stopGame() {
+  gameInProgress = false;
+  clearInterval(interval);
+}
+
+function checkWinners() {
+  for (let id in players) {
+    const card = players[id].card;
+    if (card.every(n => drawnNumbers.includes(n))) {
+      io.emit('winner', players[id].name);
+      stopGame();
       break;
     }
   }
 }
 
-// ✅ Iniciar servidor
 server.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  console.log(`Servidor escuchando en http://localhost:${PORT}`);
 });

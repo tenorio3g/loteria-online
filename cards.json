@@ -1,0 +1,272 @@
+[
+  {
+    "id": 1,
+    "name": "Gallo",
+    "image": "gallo.png"
+  },
+  {
+    "id": 2,
+    "name": "Diablito",
+    "image": "diablito.png"
+  },
+  {
+    "id": 3,
+    "name": "Dama",
+    "image": "dama.png"
+  },
+  {
+    "id": 4,
+    "name": "Catrín",
+    "image": "catrín.png"
+  },
+  {
+    "id": 5,
+    "name": "Paraguas",
+    "image": "paraguas.png"
+  },
+  {
+    "id": 6,
+    "name": "Sirena",
+    "image": "sirena.png"
+  },
+  {
+    "id": 7,
+    "name": "Escalera",
+    "image": "escalera.png"
+  },
+  {
+    "id": 8,
+    "name": "Botella",
+    "image": "botella.png"
+  },
+  {
+    "id": 9,
+    "name": "Barril",
+    "image": "barril.png"
+  },
+  {
+    "id": 10,
+    "name": "Árbol",
+    "image": "árbol.png"
+  },
+  {
+    "id": 11,
+    "name": "Melón",
+    "image": "melón.png"
+  },
+  {
+    "id": 12,
+    "name": "Valiente",
+    "image": "valiente.png"
+  },
+  {
+    "id": 13,
+    "name": "Gorrito",
+    "image": "gorrito.png"
+  },
+  {
+    "id": 14,
+    "name": "Muerte",
+    "image": "muerte.png"
+  },
+  {
+    "id": 15,
+    "name": "Pera",
+    "image": "pera.png"
+  },
+  {
+    "id": 16,
+    "name": "Bandera",
+    "image": "bandera.png"
+  },
+  {
+    "id": 17,
+    "name": "Bandolón",
+    "image": "bandolón.png"
+  },
+  {
+    "id": 18,
+    "name": "Violoncello",
+    "image": "violoncello.png"
+  },
+  {
+    "id": 19,
+    "name": "Garza",
+    "image": "garza.png"
+  },
+  {
+    "id": 20,
+    "name": "Pájaro",
+    "image": "pájaro.png"
+  },
+  {
+    "id": 21,
+    "name": "Mano",
+    "image": "mano.png"
+  },
+  {
+    "id": 22,
+    "name": "Bota",
+    "image": "bota.png"
+  },
+  {
+    "id": 23,
+    "name": "Luna",
+    "image": "luna.png"
+  },
+  {
+    "id": 24,
+    "name": "Cotorro",
+    "image": "cotorro.png"
+  },
+  {
+    "id": 25,
+    "name": "Borracho",
+    "image": "borracho.png"
+  },
+  {
+    "id": 26,
+    "name": "Negrito",
+    "image": "negrito.png"
+  },
+  {
+    "id": 27,
+    "name": "Corazón",
+    "image": "corazón.png"
+  },
+  {
+    "id": 28,
+    "name": "Sandía",
+    "image": "sandía.png"
+  },
+  {
+    "id": 29,
+    "name": "Tambor",
+    "image": "tambor.png"
+  },
+  {
+    "id": 30,
+    "name": "Camarón",
+    "image": "camarón.png"
+  },
+  {
+    "id": 31,
+    "name": "Jaras",
+    "image": "jaras.png"
+  },
+  {
+    "id": 32,
+    "name": "Músico",
+    "image": "músico.png"
+  },
+  {
+    "id": 33,
+    "name": "Araña",
+    "image": "araña.png"
+  },
+  {
+    "id": 34,
+    "name": "Soldado",
+    "image": "soldado.png"
+  },
+  {
+    "id": 35,
+    "name": "Estrella",
+    "image": "estrella.png"
+  },
+  {
+    "id": 36,
+    "name": "Cazo",
+    "image": "cazo.png"
+  },
+  {
+    "id": 37,
+    "name": "Nopal",
+    "image": "nopal.png"
+  },
+  {
+    "id": 38,
+    "name": "Alacrán",
+    "image": "alacrán.png"
+  },
+  {
+    "id": 39,
+    "name": "Rana",
+    "image": "rana.png"
+  },
+  {
+    "id": 40,
+    "name": "Escorpión",
+    "image": "escorpión.png"
+  },
+  {
+    "id": 41,
+    "name": "Estrella",
+    "image": "estrella.png"
+  },
+  {
+    "id": 42,
+    "name": "Cazo",
+    "image": "cazo.png"
+  },
+  {
+    "id": 43,
+    "name": "Nopal",
+    "image": "nopal.png"
+  },
+  {
+    "id": 44,
+    "name": "Alacrán",
+    "image": "alacrán.png"
+  },
+  {
+    "id": 45,
+    "name": "Rana",
+    "image": "rana.png"
+  },
+  {
+    "id": 46,
+    "name": "Campana",
+    "image": "campana.png"
+  },
+  {
+    "id": 47,
+    "name": "Caña",
+    "image": "caña.png"
+  },
+  {
+    "id": 48,
+    "name": "Venado",
+    "image": "venado.png"
+  },
+  {
+    "id": 49,
+    "name": "Sol",
+    "image": "sol.png"
+  },
+  {
+    "id": 50,
+    "name": "Corona",
+    "image": "corona.png"
+  },
+  {
+    "id": 51,
+    "name": "Chalupa",
+    "image": "chalupa.png"
+  },
+  {
+    "id": 52,
+    "name": "Pino",
+    "image": "pino.png"
+  },
+  {
+    "id": 53,
+    "name": "Pescado",
+    "image": "pescado.png"
+  },
+  {
+    "id": 54,
+    "name": "Palma",
+    "image": "palma.png"
+  }
+]
