@@ -7,6 +7,7 @@ function joinGame() {
   const name = document.getElementById('name').value;
   if (name.trim()) {
     socket.emit('join', name);
+    document.getElementById('winner').textContent = ''; // limpiar ganador
   }
 }
 
@@ -44,9 +45,10 @@ socket.on('numberDrawn', (num) => {
 
   if (carta) {
     lastNumber.textContent = `Salió: ${carta.name}`;
-    currentCard.innerHTML = `
-      <img src="${carta.image}" alt="${carta.name}" style="width: 180px; border-radius: 12px; margin-top: 10px;">
-    `;
+    currentCard.innerHTML = `<img src="${carta.image}" alt="${carta.name}">`;
+    currentCard.classList.add('show');
+    setTimeout(() => currentCard.classList.remove('show'), 1200);
+
     if (carta.audio) {
       const sonido = new Audio(carta.audio);
       sonido.play();
