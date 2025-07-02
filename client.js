@@ -29,7 +29,7 @@ socket.on('card', (generatedCard) => {
       const img = document.createElement('img');
       img.src = carta.image;
       img.alt = carta.name;
-      img.style.width = '100%';
+      img.style.width = '80%';
       img.style.borderRadius = '8px';
       cell.setAttribute('data-num', num);
       cell.appendChild(img);
