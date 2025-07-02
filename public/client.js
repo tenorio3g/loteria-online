@@ -28,13 +28,13 @@ socket.on('card', (generatedCard) => {
 
     const carta = cardData.find(c => c.id === num);
     if (carta) {
-      const img = document.createElement('Img');
-      Img.src = `Img/${carta.image}`;
-      Img.alt = carta.name;
-      Img.style.width = '100%';
-      Img.style.borderRadius = '8px';
+      const img = document.createElement('img');
+      img.src = `img/${carta.image}`;
+      img.alt = carta.name;
+      img.style.width = '100%';
+      img.style.borderRadius = '8px';
       cell.setAttribute('data-num', num);
-      cell.appendChild(Img);
+      cell.appendChild(img);
     } else {
       cell.textContent = num;
     }
@@ -53,12 +53,12 @@ socket.on('numberDrawn', (num) => {
 
   const carta = cardData.find(c => c.id === num);
   if (carta) {
-    const img = document.createElement('Img');
-    Img.src = `Img/${carta.image}`;
-    Img.alt = carta.name;
-    Img.style.width = '150px';
-    Img.style.borderRadius = '12px';
-    lastImageEl.appendChild(Img);
+    const img = document.createElement('img');
+    img.src = `img/${carta.image}`;
+    img.alt = carta.name;
+    img.style.width = '150px';
+    img.style.borderRadius = '12px';
+    lastImageEl.appendChild(img);
     lastNumberEl.textContent = `Salió: ${carta.name}`;
   }
 
