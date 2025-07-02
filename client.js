@@ -1,97 +1,61 @@
-// Conexión con el servidor
+
 const socket = io();
-
-// Cartilla del jugador
 let card = [];
-
-// Todas las cartas posibles
 let cardData = [];
 
-// Reproductor de audio global
-let audio = null;
-
-// Cargar cartas desde cards.json
-fetch('cards.json')
-  .then(res => res.json())
-  .then(data => {
-    cardData = data;
-  });
-
-// Función para unirse al juego
 function joinGame() {
-  const name = document.getElementById('name').value.trim();
-  if (name) {
+  const name = document.getElementById('name').value;
+  if (name.trim()) {
     socket.emit('join', name);
-  } else {
-    alert('Ingresa tu nombre');
   }
 }
 
-// Recibir cartilla generada
+fetch('cards.json')
+  .then(res => res.json())
+  .then(data => cardData = data);
+
 socket.on('card', (generatedCard) => {
   card = generatedCard;
-
   const cardDiv = document.getElementById('card');
   cardDiv.innerHTML = '';
-
   for (let num of card) {
     const cell = document.createElement('div');
     cell.classList.add('cell');
-
     const carta = cardData.find(c => c.id === num);
     if (carta) {
       const img = document.createElement('img');
       img.src = carta.image;
       img.alt = carta.name;
-      img.style.width = '80%';
+      img.style.width = '100%';
       img.style.borderRadius = '8px';
       cell.setAttribute('data-num', num);
       cell.appendChild(img);
     } else {
       cell.textContent = num;
-      cell.setAttribute('data-num', num);
     }
-
     cardDiv.appendChild(cell);
   }
 });
 
-// Recibir carta cantada
 socket.on('numberDrawn', (num) => {
   const carta = cardData.find(c => c.id === num);
+  const lastNumber = document.getElementById('lastNumber');
+  const currentCard = document.getElementById('currentCard');
 
   if (carta) {
-    // Mostrar nombre de la carta
-    document.getElementById('lastNumber').textContent = `Salió: ${carta.name}`;
-
-    // Mostrar imagen de la carta
-    const lastImageDiv = document.getElementById('lastImage');
-    lastImageDiv.innerHTML = '';
-
-    const img = document.createElement('img');
-    img.src = carta.image;
-    img.alt = carta.name;
-    img.style.width = '100%';
-    img.style.borderRadius = '8px';
-    lastImageDiv.appendChild(img);
-
-    // Reproducir sonido de la carta
-    if (carta.sound) {
-      if (audio) {
-        audio.pause();
-      }
-      audio = new Audio(carta.sound);
-      audio.play().catch(err => {
-        console.warn('No se pudo reproducir el sonido:', err);
-      });
+    lastNumber.textContent = `Salió: ${carta.name}`;
+    currentCard.innerHTML = `
+      <img src="${carta.image}" alt="${carta.name}" style="width: 180px; border-radius: 12px; margin-top: 10px;">
+    `;
+    if (carta.audio) {
+      const sonido = new Audio(carta.audio);
+      sonido.play();
     }
   } else {
-    // Si no existe la carta, mostrar solo número
-    document.getElementById('lastNumber').textContent = `Salió: ${num}`;
-    document.getElementById('lastImage').innerHTML = '';
+    lastNumber.textContent = `Salió: ${num}`;
+    currentCard.innerHTML = '';
   }
 
-  // Marcar carta en la cartilla
   const cells = document.querySelectorAll('.cell');
   cells.forEach(cell => {
     const dataNum = cell.getAttribute('data-num');
@@ -101,12 +65,10 @@ socket.on('numberDrawn', (num) => {
   });
 });
 
-// Mostrar ganador
 socket.on('winner', (name) => {
   document.getElementById('winner').textContent = `¡Ganó ${name}!`;
 });
 
-// Mensajes de estado
 socket.on('message', (msg) => {
   document.getElementById('status').textContent = msg;
 });

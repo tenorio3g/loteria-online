@@ -3,271 +3,306 @@
     "id": 1,
     "name": "Gallo",
     "image": "gallo.png",
-    "sound": "gallo.mp3"
+    "audio": "gallo.mp3"
   },
   {
     "id": 2,
-    "name": "Valiente",
-    "image": "valiente.png"
+    "name": "Diablito",
+    "image": "diablito.png",
+    "audio": "diablito.mp3"
   },
   {
     "id": 3,
     "name": "Dama",
-    "image": "dama.png"
+    "image": "dama.png",
+    "audio": "dama.mp3"
   },
   {
     "id": 4,
     "name": "Catrín",
-    "image": "catrin.png"
+    "image": "catrín.png",
+    "audio": "catrín.mp3"
   },
   {
     "id": 5,
     "name": "Paraguas",
-    "image": "paraguas.png"
+    "image": "paraguas.png",
+    "audio": "paraguas.mp3"
   },
   {
     "id": 6,
     "name": "Sirena",
-    "image": "sirena.png"
+    "image": "sirena.png",
+    "audio": "sirena.mp3"
   },
   {
     "id": 7,
     "name": "Escalera",
-    "image": "escalera.png"
+    "image": "escalera.png",
+    "audio": "escalera.mp3"
   },
   {
     "id": 8,
     "name": "Botella",
-    "image": "botella.png"
+    "image": "botella.png",
+    "audio": "botella.mp3"
   },
   {
     "id": 9,
     "name": "Barril",
-    "image": "barril.png"
+    "image": "barril.png",
+    "audio": "barril.mp3"
   },
   {
     "id": 10,
     "name": "Árbol",
-    "image": "arbol.png"
+    "image": "árbol.png",
+    "audio": "árbol.mp3"
   },
   {
     "id": 11,
     "name": "Melón",
-    "image": "melon.png"
+    "image": "melón.png",
+    "audio": "melón.mp3"
   },
   {
     "id": 12,
     "name": "Valiente",
-    "image": "valiente2.png"
+    "image": "valiente.png",
+    "audio": "valiente.mp3"
   },
   {
     "id": 13,
     "name": "Gorrito",
-    "image": "gorrito.png"
+    "image": "gorrito.png",
+    "audio": "gorrito.mp3"
   },
   {
     "id": 14,
     "name": "Muerte",
-    "image": "muerte.png"
+    "image": "muerte.png",
+    "audio": "muerte.mp3"
   },
   {
     "id": 15,
     "name": "Pera",
-    "image": "pera.png"
+    "image": "pera.png",
+    "audio": "pera.mp3"
   },
   {
     "id": 16,
     "name": "Bandera",
-    "image": "bandera.png"
+    "image": "bandera.png",
+    "audio": "bandera.mp3"
   },
   {
     "id": 17,
     "name": "Bandolón",
-    "image": "bandolon.png"
+    "image": "bandolón.png",
+    "audio": "bandolón.mp3"
   },
   {
     "id": 18,
     "name": "Violoncello",
-    "image": "violoncello.png"
+    "image": "violoncello.png",
+    "audio": "violoncello.mp3"
   },
   {
     "id": 19,
     "name": "Garza",
-    "image": "garza.png"
+    "image": "garza.png",
+    "audio": "garza.mp3"
   },
   {
     "id": 20,
     "name": "Pájaro",
-    "image": "pajaro.png"
+    "image": "pájaro.png",
+    "audio": "pájaro.mp3"
   },
   {
     "id": 21,
     "name": "Mano",
-    "image": "mano.png"
+    "image": "mano.png",
+    "audio": "mano.mp3"
   },
   {
     "id": 22,
     "name": "Bota",
-    "image": "bota.png"
+    "image": "bota.png",
+    "audio": "bota.mp3"
   },
   {
     "id": 23,
     "name": "Luna",
-    "image": "luna.png"
+    "image": "luna.png",
+    "audio": "luna.mp3"
   },
   {
     "id": 24,
     "name": "Cotorro",
-    "image": "cotorro.png"
+    "image": "cotorro.png",
+    "audio": "cotorro.mp3"
   },
   {
     "id": 25,
     "name": "Borracho",
-    "image": "borracho.png"
+    "image": "borracho.png",
+    "audio": "borracho.mp3"
   },
   {
     "id": 26,
     "name": "Negrito",
-    "image": "negrito.png"
+    "image": "negrito.png",
+    "audio": "negrito.mp3"
   },
   {
     "id": 27,
     "name": "Corazón",
-    "image": "corazon.png"
+    "image": "corazón.png",
+    "audio": "corazón.mp3"
   },
   {
     "id": 28,
     "name": "Sandía",
-    "image": "sandia.png"
+    "image": "sandía.png",
+    "audio": "sandía.mp3"
   },
   {
     "id": 29,
     "name": "Tambor",
-    "image": "tambor.png"
+    "image": "tambor.png",
+    "audio": "tambor.mp3"
   },
   {
     "id": 30,
     "name": "Camarón",
-    "image": "camaron.png"
+    "image": "camarón.png",
+    "audio": "camarón.mp3"
   },
   {
     "id": 31,
     "name": "Jaras",
-    "image": "jaras.png"
+    "image": "jaras.png",
+    "audio": "jaras.mp3"
   },
   {
     "id": 32,
     "name": "Músico",
-    "image": "musico.png"
+    "image": "músico.png",
+    "audio": "músico.mp3"
   },
   {
     "id": 33,
     "name": "Araña",
-    "image": "araña.png"
+    "image": "araña.png",
+    "audio": "araña.mp3"
   },
   {
     "id": 34,
     "name": "Soldado",
-    "image": "soldado.png"
+    "image": "soldado.png",
+    "audio": "soldado.mp3"
   },
   {
     "id": 35,
     "name": "Estrella",
-    "image": "estrella.png"
+    "image": "estrella.png",
+    "audio": "estrella.mp3"
   },
   {
     "id": 36,
     "name": "Cazo",
-    "image": "cazo.png"
+    "image": "cazo.png",
+    "audio": "cazo.mp3"
   },
   {
     "id": 37,
     "name": "Nopal",
-    "image": "nopal.png"
+    "image": "nopal.png",
+    "audio": "nopal.mp3"
   },
   {
     "id": 38,
     "name": "Alacrán",
-    "image": "alacran.png"
+    "image": "alacrán.png",
+    "audio": "alacrán.mp3"
   },
   {
     "id": 39,
     "name": "Rana",
-    "image": "rana.png"
+    "image": "rana.png",
+    "audio": "rana.mp3"
   },
   {
     "id": 40,
-    "name": "Escorpión",
-    "image": "escorpion.png"
+    "name": "Campana",
+    "image": "campana.png",
+    "audio": "campana.mp3"
   },
   {
     "id": 41,
-    "name": "Estrella",
-    "image": "estrella.png"
+    "name": "Caña",
+    "image": "caña.png",
+    "audio": "caña.mp3"
   },
   {
     "id": 42,
-    "name": "Cazo",
-    "image": "cazo.png"
+    "name": "Venado",
+    "image": "venado.png",
+    "audio": "venado.mp3"
   },
   {
     "id": 43,
-    "name": "Nopal",
-    "image": "nopal.png"
+    "name": "Sol",
+    "image": "sol.png",
+    "audio": "sol.mp3"
   },
   {
     "id": 44,
-    "name": "Alacrán",
-    "image": "alacran.png"
+    "name": "Corona",
+    "image": "corona.png",
+    "audio": "corona.mp3"
   },
   {
     "id": 45,
-    "name": "Rana",
-    "image": "rana.png"
+    "name": "Chalupa",
+    "image": "chalupa.png",
+    "audio": "chalupa.mp3"
   },
   {
     "id": 46,
-    "name": "Campana",
-    "image": "campana.png"
+    "name": "Pino",
+    "image": "pino.png",
+    "audio": "pino.mp3"
   },
   {
     "id": 47,
-    "name": "Caña",
-    "image": "caña.png"
+    "name": "Pescado",
+    "image": "pescado.png",
+    "audio": "pescado.mp3"
   },
   {
     "id": 48,
-    "name": "Venado",
-    "image": "venado.png"
+    "name": "Palma",
+    "image": "palma.png",
+    "audio": "palma.mp3"
   },
   {
     "id": 49,
-    "name": "Sol",
-    "image": "sol.png"
+    "name": "Maceta",
+    "image": "maceta.png",
+    "audio": "maceta.mp3"
   },
   {
     "id": 50,
-    "name": "Corona",
-    "image": "corona.png"
+    "name": "Arpa",
+    "image": "arpa.png",
+    "audio": "arpa.mp3"
   },
   {
     "id": 51,
-    "name": "Chalupa",
-    "image": "chalupa.png"
-  },
-  {
-    "id": 52,
-    "name": "Pino",
-    "image": "pino.png"
-  },
-  {
-    "id": 53,
-    "name": "Pescado",
-    "image": "pescado.png"
-  },
-  {
-    "id": 54,
-    "name": "Palma",
-    "image": "palma.png"
+    "name": "Reloj",
+    "image": "reloj.png",
+    "audio": "reloj.mp3"
   }
 ]
