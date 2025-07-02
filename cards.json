@@ -6,8 +6,8 @@
   },
   {
     "id": 2,
-    "name": "Diablito",
-    "image": "diablito.png"
+    "name": "Valiente",
+    "image": "valiente.png"
   },
   {
     "id": 3,
@@ -17,7 +17,7 @@
   {
     "id": 4,
     "name": "Catrín",
-    "image": "catrín.png"
+    "image": "catrin.png"
   },
   {
     "id": 5,
@@ -47,17 +47,17 @@
   {
     "id": 10,
     "name": "Árbol",
-    "image": "árbol.png"
+    "image": "arbol.png"
   },
   {
     "id": 11,
     "name": "Melón",
-    "image": "melón.png"
+    "image": "melon.png"
   },
   {
     "id": 12,
     "name": "Valiente",
-    "image": "valiente.png"
+    "image": "valiente2.png"
   },
   {
     "id": 13,
@@ -82,7 +82,7 @@
   {
     "id": 17,
     "name": "Bandolón",
-    "image": "bandolón.png"
+    "image": "bandolon.png"
   },
   {
     "id": 18,
@@ -97,7 +97,7 @@
   {
     "id": 20,
     "name": "Pájaro",
-    "image": "pájaro.png"
+    "image": "pajaro.png"
   },
   {
     "id": 21,
@@ -137,7 +137,7 @@
   {
     "id": 28,
     "name": "Sandía",
-    "image": "sandía.png"
+    "image": "sandia.png"
   },
   {
     "id": 29,
@@ -147,7 +147,7 @@
   {
     "id": 30,
     "name": "Camarón",
-    "image": "camarón.png"
+    "image": "camaron.png"
   },
   {
     "id": 31,
@@ -157,7 +157,7 @@
   {
     "id": 32,
     "name": "Músico",
-    "image": "músico.png"
+    "image": "musico.png"
   },
   {
     "id": 33,
@@ -187,7 +187,7 @@
   {
     "id": 38,
     "name": "Alacrán",
-    "image": "alacrán.png"
+    "image": "alacran.png"
   },
   {
     "id": 39,
@@ -197,7 +197,7 @@
   {
     "id": 40,
     "name": "Escorpión",
-    "image": "escorpión.png"
+    "image": "escorpion.png"
   },
   {
     "id": 41,
@@ -217,7 +217,7 @@
   {
     "id": 44,
     "name": "Alacrán",
-    "image": "alacrán.png"
+    "image": "alacran.png"
   },
   {
     "id": 45,
