@@ -45,23 +45,20 @@
       border-color: #ffa502 !important;
     }
 
-    #currentCard {
-      width: 180px;
-      margin: 10px auto;
+    #floatingCard {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.1);
       opacity: 0;
-      transform: scale(1);
-      transition: opacity 0.5s ease, transform 0.5s ease;
+      z-index: 999;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+      pointer-events: none;
     }
 
-    #currentCard.show {
+    #floatingCard.show {
+      transform: translate(-50%, -50%) scale(1);
       opacity: 1;
-      transform: scale(1.2);
-    }
-
-    #currentCard img {
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
     }
 
     input, button {
@@ -92,7 +89,7 @@
 
   <p id="status"></p>
 
-  <div id="currentCard"></div>
+  <div id="floatingCard"></div>
   <div id="card"></div>
 
   <h2 id="lastNumber"></h2>

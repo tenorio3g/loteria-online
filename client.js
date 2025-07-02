@@ -7,7 +7,7 @@ function joinGame() {
   const name = document.getElementById('name').value;
   if (name.trim()) {
     socket.emit('join', name);
-    document.getElementById('winner').textContent = ''; // limpiar ganador
+    document.getElementById('winner').textContent = '';
   }
 }
 
@@ -41,13 +41,13 @@ socket.on('card', (generatedCard) => {
 socket.on('numberDrawn', (num) => {
   const carta = cardData.find(c => c.id === num);
   const lastNumber = document.getElementById('lastNumber');
-  const currentCard = document.getElementById('currentCard');
+  const floatingCard = document.getElementById('floatingCard');
 
   if (carta) {
     lastNumber.textContent = `Salió: ${carta.name}`;
-    currentCard.innerHTML = `<img src="${carta.image}" alt="${carta.name}">`;
-    currentCard.classList.add('show');
-    setTimeout(() => currentCard.classList.remove('show'), 1200);
+    floatingCard.innerHTML = `<img src="${carta.image}" alt="${carta.name}" style="width: 200px; border-radius: 12px;">`;
+    floatingCard.classList.add('show');
+    setTimeout(() => floatingCard.classList.remove('show'), 1500);
 
     if (carta.audio) {
       const sonido = new Audio(carta.audio);
@@ -55,7 +55,7 @@ socket.on('numberDrawn', (num) => {
     }
   } else {
     lastNumber.textContent = `Salió: ${num}`;
-    currentCard.innerHTML = '';
+    floatingCard.innerHTML = '';
   }
 
   const cells = document.querySelectorAll('.cell');
