@@ -29,7 +29,7 @@ socket.on('card', (generatedCard) => {
     const carta = cardData.find(c => c.id === num);
     if (carta) {
       const img = document.createElement('img');
-      img.src = `img/${carta.image}`;
+      img.src = `Img/${carta.image}`;
       img.alt = carta.name;
       img.style.width = '100%';
       img.style.borderRadius = '8px';
