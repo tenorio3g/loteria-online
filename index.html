@@ -5,19 +5,85 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Lotería Online</title>
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
-    #card { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 20px; }
-    .cell { border: 1px solid #ccc; padding: 10px; border-radius: 8px; background: #f9f9f9; }
-    .marked { background-color: yellow; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 20px;
+      background: #f4f4f4;
+    }
+
+    #card {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .cell {
+      border: 2px solid #444;
+      border-radius: 12px;
+      padding: 5px;
+      background: #fff;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .cell img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .marked {
+      background-color: #ffe066 !important;
+      border-color: #ffa502 !important;
+    }
+
+    #currentCard img {
+      width: 180px;
+      margin-top: 10px;
+      border-radius: 12px;
+      box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+    }
+
+    /* Responsive para celulares */
+    @media (max-width: 600px) {
+      #card {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    input, button {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #2ecc71;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    button:hover {
+      background-color: #27ae60;
+    }
   </style>
 </head>
 <body>
   <h1>Juego de Lotería</h1>
+
   <input type="text" id="name" placeholder="Tu nombre" />
   <button onclick="joinGame()">Unirse</button>
+
   <p id="status"></p>
+
   <div id="card"></div>
+
   <h2 id="lastNumber"></h2>
+  <div id="currentCard"></div>
+
   <h2 id="winner"></h2>
 
   <script src="/socket.io/socket.io.js"></script>
