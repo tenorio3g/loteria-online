@@ -2,7 +2,8 @@ const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
 const path = require('path');
-const { generateCard } = require('./card');
+const fs = require('fs');
+const { generateCard } = require('./card'); // Asegúrese que card.js esté también en raíz
 
 const app = express();
 const server = http.createServer(app);
@@ -10,20 +11,27 @@ const io = new Server(server);
 
 const PORT = process.env.PORT || 3000;
 
-app.use(express.static(path.join(__dirname, 'public')));
+// Servir todos los archivos desde la raíz del proyecto
+app.use(express.static(path.join(__dirname)));
 
+// Variables de juego
 let players = {};
 let drawnNumbers = [];
 let interval;
 let gameInProgress = false;
 
-// ✅ Conexión de nuevo jugador
+// Rutas
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// Socket.IO
 io.on('connection', (socket) => {
-  console.log(`Usuario conectado: ${socket.id}`);
+  console.log(`Nuevo cliente conectado: ${socket.id}`);
 
   socket.on('join', (name) => {
-    if (gameInProgress) {
-      socket.emit('message', 'Espera al siguiente juego...');
+    if (Object.keys(players).length >= 10) {
+      socket.emit('message', '¡El juego ya está lleno!');
       return;
     }
 
@@ -33,31 +41,37 @@ io.on('connection', (socket) => {
     };
 
     socket.emit('card', players[socket.id].card);
-    io.emit('message', `Jugadores conectados: ${Object.keys(players).length}`);
+    io.emit('message', `${name} se ha unido al juego.`);
 
-    if (Object.keys(players).length >= 4 && !gameInProgress) {
+    // Iniciar juego automáticamente cuando haya al menos 4 jugadores
+    if (!gameInProgress && Object.keys(players).length >= 4) {
       startGame();
     }
   });
 
   socket.on('disconnect', () => {
-    console.log(`Usuario desconectado: ${socket.id}`);
-    delete players[socket.id];
-    io.emit('message', `Jugadores conectados: ${Object.keys(players).length}`);
+    if (players[socket.id]) {
+      const playerName = players[socket.id].name;
+      delete players[socket.id];
+      io.emit('message', `${playerName} salió del juego.`);
+    }
+
+    if (Object.keys(players).length < 4 && gameInProgress) {
+      stopGame();
+      io.emit('message', 'Juego detenido. Se necesitan al menos 4 jugadores.');
+    }
   });
 });
 
-// ✅ Iniciar juego automáticamente
+// Inicia el juego
 function startGame() {
-  drawnNumbers = [];
   gameInProgress = true;
-  io.emit('message', '¡Comienza la lotería!');
+  drawnNumbers = [];
 
   interval = setInterval(() => {
     if (drawnNumbers.length >= 54) {
-      clearInterval(interval);
-      gameInProgress = false;
-      io.emit('message', 'Fin del juego: se acabaron las cartas');
+      stopGame();
+      io.emit('message', '¡Se han agotado las cartas!');
       return;
     }
 
@@ -68,26 +82,29 @@ function startGame() {
 
     drawnNumbers.push(num);
     io.emit('numberDrawn', num);
-
-    checkForWinners();
-  }, 3000);
+    checkWinners(num);
+  }, 4000);
 }
 
-// ✅ Verificar si alguien ya ganó
-function checkForWinners() {
-  for (const [id, player] of Object.entries(players)) {
-    const matched = player.card.filter(n => drawnNumbers.includes(n));
-    if (matched.length >= 16) {
-      clearInterval(interval);
-      gameInProgress = false;
+// Detiene el juego
+function stopGame() {
+  gameInProgress = false;
+  clearInterval(interval);
+}
+
+// Verifica si alguien ganó
+function checkWinners(num) {
+  for (let id in players) {
+    let player = players[id];
+    if (player.card.every(n => drawnNumbers.includes(n))) {
       io.emit('winner', player.name);
-      io.emit('message', `Fin del juego: ganó ${player.name}`);
+      stopGame();
       break;
     }
   }
 }
 
-// ✅ Iniciar servidor
+// Inicia el servidor
 server.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
