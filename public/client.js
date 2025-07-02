@@ -54,7 +54,7 @@ socket.on('numberDrawn', (num) => {
   const carta = cardData.find(c => c.id === num);
   if (carta) {
     const img = document.createElement('img');
-    img.src = `img/${carta.image}`;
+    img.src = `Img/${carta.image}`;
     img.alt = carta.name;
     img.style.width = '150px';
     img.style.borderRadius = '12px';
