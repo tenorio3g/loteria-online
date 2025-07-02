@@ -28,8 +28,8 @@ socket.on('card', (generatedCard) => {
 
     const carta = cardData.find(c => c.id === num);
     if (carta) {
-      const img = document.createElement('img');
-      img.src = `img/${carta.image}`;
+      const img = document.createElement('Img');
+      img.src = `Img/${carta.image}`;
       img.alt = carta.name;
       img.style.width = '100%';
       img.style.borderRadius = '8px';
@@ -53,8 +53,8 @@ socket.on('numberDrawn', (num) => {
 
   const carta = cardData.find(c => c.id === num);
   if (carta) {
-    const img = document.createElement('img');
-    img.src = `img/${carta.image}`;
+    const img = document.createElement('Img');
+    img.src = `Img/${carta.image}`;
     img.alt = carta.name;
     img.style.width = '150px';
     img.style.borderRadius = '12px';
