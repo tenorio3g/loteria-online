@@ -1,93 +1,75 @@
+
 const express = require('express');
-const http = require('http');
-const { Server } = require('socket.io');
-const path = require('path');
-const fs = require('fs');
-const { generateCard } = require('./card');
-
 const app = express();
-const server = http.createServer(app);
-const io = new Server(server);
-const PORT = process.env.PORT || 3000;
+const http = require('http').createServer(app);
+const io = require('socket.io')(http);
 
-app.use(express.static(path.join(__dirname)));
+app.use(express.static(__dirname));
 
-let players = {};
+const TOTAL_NUMBERS = 54;
+let players = [];
+let cards = {};
 let drawnNumbers = [];
-let interval;
-let gameInProgress = false;
+let gameStarted = false;
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
+function generateCard() {
+  const nums = [];
+  while (nums.length < 16) {
+    const rand = Math.floor(Math.random() * TOTAL_NUMBERS) + 1;
+    if (!nums.includes(rand)) nums.push(rand);
+  }
+  return nums;
+}
+
+function drawNumber() {
+  if (drawnNumbers.length >= TOTAL_NUMBERS) return null;
+  let num;
+  do {
+    num = Math.floor(Math.random() * TOTAL_NUMBERS) + 1;
+  } while (drawnNumbers.includes(num));
+  drawnNumbers.push(num);
+  return num;
+}
+
+function checkWinner(card) {
+  return card.every(n => drawnNumbers.includes(n));
+}
 
 io.on('connection', (socket) => {
-  console.log(`Cliente conectado: ${socket.id}`);
-
   socket.on('join', (name) => {
-    if (Object.keys(players).length >= 10) {
-      socket.emit('message', '¡El juego ya está lleno!');
-      return;
-    }
-    players[socket.id] = { name, card: generateCard() };
-    socket.emit('card', players[socket.id].card);
-    io.emit('message', `${name} se ha unido al juego.`);
+    players.push(name);
+    cards[socket.id] = generateCard();
+    socket.emit('card', cards[socket.id]);
+    io.emit('players', players);
+    io.emit('ready', players.length >= 4);
+  });
 
-    if (!gameInProgress && Object.keys(players).length >= 4) {
-      startGame();
+  socket.on('iniciar', () => {
+    if (players.length >= 4 && !gameStarted) {
+      gameStarted = true;
+      const interval = setInterval(() => {
+        const num = drawNumber();
+        if (num === null) return clearInterval(interval);
+        io.emit('numberDrawn', num);
+        for (let id in cards) {
+          if (checkWinner(cards[id])) {
+            io.emit('winner', players[Object.keys(cards).indexOf(id)]);
+            clearInterval(interval);
+            break;
+          }
+        }
+      }, 3000);
     }
   });
 
   socket.on('disconnect', () => {
-    if (players[socket.id]) {
-      const name = players[socket.id].name;
-      delete players[socket.id];
-      io.emit('message', `${name} salió del juego.`);
-    }
-    if (Object.keys(players).length < 4 && gameInProgress) {
-      stopGame();
-      io.emit('message', 'Juego detenido por falta de jugadores.');
-    }
+    players.splice(Object.keys(cards).indexOf(socket.id), 1);
+    delete cards[socket.id];
+    io.emit('players', players);
+    io.emit('ready', players.length >= 4);
   });
 });
 
-function startGame() {
-  gameInProgress = true;
-  drawnNumbers = [];
-
-  interval = setInterval(() => {
-    if (drawnNumbers.length >= 54) {
-      stopGame();
-      io.emit('message', '¡Todas las cartas han salido!');
-      return;
-    }
-    let num;
-    do {
-      num = Math.floor(Math.random() * 54) + 1;
-    } while (drawnNumbers.includes(num));
-
-    drawnNumbers.push(num);
-    io.emit('numberDrawn', num);
-    checkWinners();
-  }, 4000);
-}
-
-function stopGame() {
-  gameInProgress = false;
-  clearInterval(interval);
-}
-
-function checkWinners() {
-  for (let id in players) {
-    const card = players[id].card;
-    if (card.every(n => drawnNumbers.includes(n))) {
-      io.emit('winner', players[id].name);
-      stopGame();
-      break;
-    }
-  }
-}
-
-server.listen(PORT, () => {
-  console.log(`Servidor escuchando en http://localhost:${PORT}`);
+http.listen(3000, () => {
+  console.log('Servidor en puerto 3000');
 });

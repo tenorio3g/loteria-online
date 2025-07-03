@@ -7,8 +7,13 @@ function joinGame() {
   const name = document.getElementById('name').value;
   if (name.trim()) {
     socket.emit('join', name);
-    document.getElementById('winner').textContent = '';
+    document.getElementById('winnerFloating').classList.remove('show');
+    document.getElementById('winnerFloating').innerHTML = '';
   }
+}
+
+function iniciarJuego() {
+  socket.emit('iniciar');
 }
 
 fetch('cards.json')
@@ -27,8 +32,6 @@ socket.on('card', (generatedCard) => {
       const img = document.createElement('img');
       img.src = carta.image;
       img.alt = carta.name;
-      img.style.width = '100%';
-      img.style.borderRadius = '8px';
       cell.setAttribute('data-num', num);
       cell.appendChild(img);
     } else {
@@ -40,22 +43,14 @@ socket.on('card', (generatedCard) => {
 
 socket.on('numberDrawn', (num) => {
   const carta = cardData.find(c => c.id === num);
-  const lastNumber = document.getElementById('lastNumber');
   const floatingCard = document.getElementById('floatingCard');
+  const lastNumber = document.getElementById('lastNumber');
 
   if (carta) {
     lastNumber.textContent = `Salió: ${carta.name}`;
     floatingCard.innerHTML = `<img src="${carta.image}" alt="${carta.name}" style="width: 200px; border-radius: 12px;">`;
     floatingCard.classList.add('show');
-    setTimeout(() => floatingCard.classList.remove('show'), 2500);
-
-    if (carta.audio) {
-      const sonido = new Audio(carta.audio);
-      sonido.play();
-    }
-  } else {
-    lastNumber.textContent = `Salió: ${num}`;
-    floatingCard.innerHTML = '';
+    setTimeout(() => floatingCard.classList.remove('show'), 1500);
   }
 
   const cells = document.querySelectorAll('.cell');
@@ -68,9 +63,18 @@ socket.on('numberDrawn', (num) => {
 });
 
 socket.on('winner', (name) => {
-  document.getElementById('winner').textContent = `¡Ganó ${name}!`;
+  const winnerFloating = document.getElementById('winnerFloating');
+  winnerFloating.innerHTML = `<div style="background:#ff4757; color:#fff; padding:20px; border-radius:12px; font-size:24px;">🎉 ¡Ganó ${name}! 🎉</div>`;
+  winnerFloating.classList.add('show');
 });
 
-socket.on('message', (msg) => {
-  document.getElementById('status').textContent = msg;
+socket.on('players', (players) => {
+  const playersList = document.getElementById('playersList');
+  playersList.innerHTML = "<strong>Jugadores:</strong> " + players.join(', ');
+});
+
+socket.on('ready', (isReady) => {
+  const btn = document.getElementById('startBtn');
+  btn.disabled = !isReady;
+  document.getElementById('status').textContent = isReady ? "Listo para iniciar" : "Esperando mínimo 4 jugadores...";
 });

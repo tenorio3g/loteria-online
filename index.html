@@ -19,8 +19,7 @@
       gap: 10px;
       margin-top: 20px;
       max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 0 auto;
     }
 
     .cell {
@@ -45,7 +44,7 @@
       border-color: #ffa502 !important;
     }
 
-    #floatingCard {
+    #floatingCard, #winnerFloating {
       position: fixed;
       top: 50%;
       left: 50%;
@@ -56,9 +55,18 @@
       pointer-events: none;
     }
 
-    #floatingCard.show {
-      transform: translate(-50%, -50%) scale(1);
+    #floatingCard.show, #winnerFloating.show {
+      transform: translate(-50%, -50%) scale(1.2);
       opacity: 1;
+    }
+
+    #playersList {
+      margin-top: 10px;
+    }
+
+    #status {
+      font-weight: bold;
+      color: #e67e22;
     }
 
     input, button {
@@ -83,17 +91,18 @@
 </head>
 <body>
   <h1>Juego de Lotería</h1>
-
   <input type="text" id="name" placeholder="Tu nombre" />
   <button onclick="joinGame()">Unirse</button>
+  <button id="startBtn" onclick="iniciarJuego()" disabled>Iniciar Juego</button>
 
-  <p id="status"></p>
+  <p id="status">Esperando jugadores...</p>
+  <div id="playersList"></div>
 
   <div id="floatingCard"></div>
   <div id="card"></div>
 
   <h2 id="lastNumber"></h2>
-  <h2 id="winner"></h2>
+  <div id="winnerFloating"></div>
 
   <script src="/socket.io/socket.io.js"></script>
   <script src="client.js"></script>
