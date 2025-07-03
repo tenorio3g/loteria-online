@@ -47,7 +47,7 @@ socket.on('numberDrawn', (num) => {
     lastNumber.textContent = `Salió: ${carta.name}`;
     floatingCard.innerHTML = `<img src="${carta.image}" alt="${carta.name}" style="width: 200px; border-radius: 12px;">`;
     floatingCard.classList.add('show');
-    setTimeout(() => floatingCard.classList.remove('show'), 1500);
+    setTimeout(() => floatingCard.classList.remove('show'), 2500);
 
     if (carta.audio) {
       const sonido = new Audio(carta.audio);
