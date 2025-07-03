@@ -217,27 +217,27 @@
   },
   {
     "id": 37,
+    "name": "Mundo",
+    "image": "mundo.png",
+    "audio": "mundo.mp3"
+  },
+  {
+    "id": 38,
+    "name": "Apache",
+    "image": "apache.png",
+    "audio": "apache.mp3"
+  },
+  {
+    "id": 39,
     "name": "Nopal",
     "image": "nopal.png",
     "audio": "nopal.mp3"
   },
   {
-    "id": 38,
-    "name": "Alacrán",
+    "id": 40,
+    "name": "Alacran",
     "image": "alacran.png",
     "audio": "alacran.mp3"
-  },
-  {
-    "id": 39,
-    "name": "Rana",
-    "image": "rana.png",
-    "audio": "rana.mp3"
-  },
-  {
-    "id": 40,
-    "name": "Campana",
-    "image": "campana.png",
-    "audio": "campana.mp3"
   },
   {
     "id": 41,
@@ -247,62 +247,80 @@
   },
   {
     "id": 42,
+    "name": "Calavera",
+    "image": "calavera.png",
+    "audio": "calavera.mp3"
+  },
+  {
+    "id": 43,
+    "name": "Campana",
+    "image": "campana.png",
+    "audio": "campana.mp3"
+  },
+  {
+    "id": 44,
+    "name": "Cantarito",
+    "image": "cantarito.png",
+    "audio": "cantarito.mp3"
+  },
+  {
+    "id": 45,
     "name": "Venado",
     "image": "venado.png",
     "audio": "venado.mp3"
   },
   {
-    "id": 43,
+    "id": 46,
     "name": "Sol",
     "image": "sol.png",
     "audio": "sol.mp3"
   },
   {
-    "id": 44,
+    "id": 47,
     "name": "Corona",
     "image": "corona.png",
     "audio": "corona.mp3"
   },
   {
-    "id": 45,
+    "id": 48,
     "name": "Chalupa",
     "image": "chalupa.png",
     "audio": "chalupa.mp3"
   },
   {
-    "id": 46,
+    "id": 49,
     "name": "Pino",
     "image": "pino.png",
     "audio": "pino.mp3"
   },
   {
-    "id": 47,
+    "id": 50,
     "name": "Pescado",
     "image": "pescado.png",
     "audio": "pescado.mp3"
   },
   {
-    "id": 48,
+    "id": 51,
     "name": "Palma",
     "image": "palma.png",
     "audio": "palma.mp3"
   },
   {
-    "id": 49,
+    "id": 52,
     "name": "Maceta",
     "image": "maceta.png",
     "audio": "maceta.mp3"
   },
   {
-    "id": 50,
+    "id": 53,
     "name": "Arpa",
     "image": "arpa.png",
     "audio": "arpa.mp3"
   },
   {
-    "id": 51,
-    "name": "Reloj",
-    "image": "reloj.png",
-    "audio": "reloj.mp3"
+    "id": 54,
+    "name": "Rana",
+    "image": "rana.png",
+    "audio": "rana.mp3"
   }
 ]
