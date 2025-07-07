@@ -81,6 +81,24 @@ io.on('connection', (socket) => {
   });
 
   socket.on('iniciar', (tipo) => {
+    drawnNumbers = [];
+    gameStarted = true;
+    tipoJuego = tipo;
+
+    // Generar nueva carta para todos y limpiar marcados
+    players = players.map(p => {
+      cards[p.id] = generateCard();
+      return { ...p, marked: [] };
+    });
+
+    // Enviar nuevas cartas y reiniciar pantalla
+    for (let p of players) {
+      io.to(p.id).emit('card', cards[p.id]);
+    }
+
+    io.emit('winner', ''); // Limpiar nombre del ganador
+    io.emit('message', '¡Nuevo juego iniciado!');
+
     tipoJuego = tipo;
     gameStarted = true;
     drawnNumbers = [];
