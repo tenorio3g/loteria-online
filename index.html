@@ -40,8 +40,9 @@
     }
 
     .marked {
-      background-color: #ffe066 !important;
-      border-color: #ffa502 !important;
+      background-color: #38ada9 !important;
+      border: 3px solid #1e3799 !important;
+      box-shadow: 0 0 10px #38ada9;
     }
 
     #floatingCard, #winnerFloating {
@@ -69,7 +70,7 @@
       color: #e67e22;
     }
 
-    input, button {
+    input, button, select {
       padding: 10px;
       border-radius: 8px;
       border: 1px solid #ccc;
@@ -92,6 +93,10 @@
 <body>
   <h1>Juego de Lotería</h1>
   <input type="text" id="name" placeholder="Tu nombre" />
+  <select id="tipoJuego">
+    <option value="normal">Juego Normal</option>
+    <option value="llena">Carta Llena</option>
+  </select>
   <button onclick="joinGame()">Unirse</button>
   <button id="startBtn" onclick="iniciarJuego()" disabled>Iniciar Juego</button>
 

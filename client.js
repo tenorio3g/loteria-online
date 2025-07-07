@@ -13,7 +13,8 @@ function joinGame() {
 }
 
 function iniciarJuego() {
-  socket.emit('iniciar');
+  const tipoJuego = document.getElementById('tipoJuego').value;
+  socket.emit('iniciar', tipoJuego);
 }
 
 fetch('cards.json')
