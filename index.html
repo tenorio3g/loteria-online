@@ -7,109 +7,27 @@
   <title>Lotería Online</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
+      font-family: Arial, sans-serif;
       text-align: center;
-      padding: 20px;
-      background: #f4f4f4;
+      background: #f2f2f2;
     }
-
-    #card {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      margin-top: 20px;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .cell {
-      border: 2px solid #444;
-      border-radius: 12px;
-      padding: 5px;
-      background: #fff;
-      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .cell img {
-      width: 100%;
-      border-radius: 8px;
-    }
-
-    .marked {
-  background-color: #ffff33 !important;
-  border: 3px solid #ff00ff !important;
-  box-shadow: 0 0 15px #ffff33, 0 0 15px #ff00ff;
-}
-
-    #floatingCard, #winnerFloating {
+    #winnerFloating {
       position: fixed;
-      top: 50%;
+      top: 10%;
       left: 50%;
-      transform: translate(-50%, -50%) scale(0.1);
+      transform: translateX(-50%) scale(1.2);
       opacity: 0;
-      z-index: 999;
-      transition: transform 0.5s ease, opacity 0.5s ease;
+      z-index: 998;
       pointer-events: none;
-    }
-
-    #floatingCard.show, #winnerFloating.show {
-      transform: translate(-50%, -50%) scale(1.2);
-      opacity: 1;
-    }
-
-    #playersList {
-      margin-top: 10px;
-    }
-
-    #status {
+      transition: opacity 0.5s ease;
+      font-size: 24px;
       font-weight: bold;
-      color: #e67e22;
-    }
-
-    input, button, select {
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 16px;
-    }
-
-    button {
-      background-color: #2ecc71;
-      color: white;
-      border: none;
-      cursor: pointer;
-      margin-left: 10px;
-    }
-
-    button:hover {
-      background-color: #27ae60;
+      color: purple;
     }
   </style>
 </head>
 <body>
-  <h1>Juego de Lotería</h1>
-  <input type="text" id="name" placeholder="Tu nombre" />
-  <select id="tipoJuego">
-    <option value="normal">Juego Normal</option>
-    <option value="llena">Carta Llena</option>
-  </select>
-  <button onclick="joinGame()">Unirse</button>
-  <button id="startBtn" onclick="iniciarJuego()" disabled>Iniciar Juego</button>
-
-  <p id="status">Esperando jugadores...</p>
-  <div id="playersList"></div>
-
-  <div id="floatingCard"></div>
-  <div id="card"></div>
-
-  <h2 id="lastNumber"></h2>
+  <h1 style="text-align:center; font-family:Arial; margin-top:10px;">Lotería creada con ChatGPT y Fortunato Tenorio</h1>
   <div id="winnerFloating"></div>
-
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="client.js"></script>
 </body>
 </html>
